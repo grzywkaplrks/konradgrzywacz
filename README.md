@@ -1,2 +1,2 @@
-# konradgrzywacz
-Korepetycje z języka angielskiego online
+Konrad Grzywacz - korepetycje z języka angielskiego online
+
