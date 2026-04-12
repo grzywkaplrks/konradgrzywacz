@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="dark-mode">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,9 +45,11 @@
             -webkit-tap-highlight-color: transparent;
         }
         /* FIX: Chrome mobile podczas szybkiego przewijania odsłania tło elementu
-           <html> poza obszarem strony (compositor overdraw). Ustawiamy ciemny kolor
-           na <html>, bo ciemny motyw jest domyślny – zero białej poświaty. */
-        html { background-color: #0b1120; scroll-behavior: smooth; font-size: 16px; }
+           <html> poza obszarem strony (compositor overdraw).
+           Domyślnie jasne tło – gdy aktywny dark-mode, html też dostaje klasę dark-mode
+           i przełączamy na ciemny kolor. Dzięki temu żaden motyw nie ma poświaty. */
+        html { background-color: #fdfdfd; scroll-behavior: smooth; font-size: 16px; }
+        html.dark-mode { background-color: #0b1120; }
         body {
             font-family: 'Manrope', sans-serif;
             color: var(--col-text-main);
@@ -1351,6 +1353,7 @@
         // wcześniej ręcznie go wybrał i zapisał w localStorage.
         if (localStorage.getItem('theme') === 'light') {
             document.body.classList.remove('dark-mode');
+            document.documentElement.classList.remove('dark-mode');
         }
 
         themeToggles.forEach(t => t.addEventListener('click', () => {
